@@ -1,0 +1,44 @@
+body {
+  text-align: center;
+  margin: 0;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  background: radial-gradient(circle at top left, #0a0a0a, #1b1b1b);
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+  color: #fff;
+}
+
+h1#mainTitle {
+  font-weight: bold;
+  margin-top: 20px;
+  font-size: 3em;
+  text-shadow: 3px 3px 8px #000;
+  font-family:"Comic Sans MS", cursive, sans-serif;
+  transition: transform 1s linear;
+}
+
+button { font-size: 20px; padding: 12px 20px; margin: 8px; border-radius: 10px; border: none; background: linear-gradient(145deg, #555, #333); color: white; cursor: pointer; transition: transform 0.1s, background 0.2s, box-shadow 0.2s; }
+button:hover { transform: scale(1.05); background: linear-gradient(145deg, #777,#444); box-shadow:0 0 12px rgba(255,255,255,0.3); }
+
+#container { display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:20px;font-size:32px;font-weight:bold; position:relative; }
+
+.darkWord { display:inline-block; transition:all 0.3s; }
+
+#adminMessage {margin-top:20px;font-size:22px;font-weight:bold;display:none;cursor:pointer;user-select:none;transition:all 0.3s;}
+#menuPanel {margin-top:20px;display:none;padding:12px;border:2px solid purple;border-radius:8px;background:rgba(0,0,0,0.5);color:#fff;font-family:"Comic Sans MS",cursive,sans-serif;}
+#menuPanel button {border-radius:6px;border:none;padding:6px 10px;background:linear-gradient(145deg,#444,#222);color:#fff;margin:4px;transition:all 0.2s;cursor:pointer;}
+#menuPanel button:hover {transform:scale(1.05);background:linear-gradient(145deg,#666,#333);}
+
+#keypad { display:none;margin-top:20px; }
+.keyRow { margin:5px 0; }
+.keyRow button { width:80px;height:60px;font-size:22px;margin:4px;background:linear-gradient(145deg,#666,#444);color:white;border-radius:8px;transition:all 0.2s; }
+.wideBtn { width:120px; }
+#passwordDisplay { font-size:26px;font-weight:bold;margin-bottom:10px;letter-spacing:8px; }
+
+#secretBtn { position:absolute;bottom:12px;right:12px;width:28px;height:28px;opacity:0;border:none;background:transparent;padding:0;margin:0;cursor:pointer; }
+#secretBtn.visible { opacity:1;background:linear-gradient(145deg,#a33,#700);border-radius:4px;box-shadow:0 0 10px rgba(255,0,0,0.6); }
+
+#secretTopBtn:active { transform: scale(1.1); box-shadow: 0 0 20px #ff00ff; }
+
+canvas#particleCanvas { position: fixed; top:0; left:0; width:100%; height:100%; z-index:-1; }
