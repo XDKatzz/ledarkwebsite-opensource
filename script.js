@@ -105,8 +105,8 @@ function checkPassword(pw){
     if(!adminUnlocked){ menuPanel.style.display="none"; menuVisible=false; } 
   }
   else if(pw==="2871" && adminUnlocked){
-    menuVisible=!menuVisible;
-    menuPanel.style.display = menuVisible?"block":"none";
+  menuVisible = !menuVisible;
+  menuPanel.style.display = menuVisible ? "block" : "none";
   }
   else{
     bottomMessage.textContent="Denied!";
@@ -114,3 +114,4 @@ function checkPassword(pw){
     setTimeout(()=>bottomMessage.style.display="none",1500);
   }
 }
+
