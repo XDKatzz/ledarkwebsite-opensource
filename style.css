@@ -1,43 +1,48 @@
 body {
   margin: 0;
-  font-family: "Comic Sans MS", "Comic Neue", cursive, sans-serif;
+  font-family: "Press Start 2P", "Comic Neue", cursive, sans-serif;
   text-align: center;
+  background: black;
   transition: background 1s ease;
   overflow-x: hidden;
+  user-select: none;
 }
 
 h1 {
-  font-weight: bold;
-  font-size: 2.5em;
+  font-size: 2.2em;
   margin: 20px;
+  color: #0ff;
+  text-shadow: 0 0 10px #0ff, 0 0 20px #f0f, 0 0 30px #ff0;
 }
 
+/* Buttons */
 button {
   padding: 10px 20px;
   margin: 10px;
   font-family: inherit;
   border-radius: 10px;
-  border: none;
+  border: 2px solid #0ff;
   cursor: pointer;
-  background: #444;
-  color: white;
-  transition: transform 0.2s, background 0.3s;
+  background: black;
+  color: #0ff;
+  text-shadow: 0 0 5px #0ff;
+  transition: all 0.2s;
 }
 button:hover {
-  background: #666;
+  background: #111;
   transform: scale(1.05);
+  box-shadow: 0 0 10px #0ff;
 }
 
+/* Dark words */
 #darkContainer {
   margin-top: 20px;
   min-height: 200px;
 }
-
 .darkWord {
   display: inline-block;
   margin: 5px;
   font-size: 1.4em;
-  user-select: none;
 }
 
 /* Keypad */
@@ -48,24 +53,16 @@ button:hover {
   display: none;
   grid-template-columns: repeat(3, 60px);
   grid-gap: 10px;
-  background: rgba(0,0,0,0.85);
+  background: rgba(0,0,0,0.9);
   padding: 15px;
   border-radius: 15px;
+  border: 2px solid #0ff;
+  box-shadow: 0 0 20px #0ff;
   z-index: 2000;
 }
 #keypad button {
   font-size: 1.2em;
-}
-
-/* Hidden trigger */
-#adminTrigger {
-  position: fixed;
-  bottom: 5px;
-  right: 5px;
-  width: 40px;
-  height: 40px;
-  background: transparent;
-  z-index: 500;
+  border: 1px solid #0ff;
 }
 
 /* Panels */
@@ -75,22 +72,45 @@ button:hover {
   right: 20px;
   display: none;
   flex-direction: column;
-  background: rgba(30,30,30,0.9);
+  background: repeating-linear-gradient(45deg, #000 0px, #000 10px, #111 10px, #111 20px);
+  border: 2px solid #0ff;
+  box-shadow: 0 0 20px #0ff;
   padding: 15px;
   border-radius: 10px;
   z-index: 1000;
+  font-size: 0.8em;
 }
 #menuPanel button, #settingsPanel button {
   margin: 5px 0;
-  background: #222;
+  background: black;
+  color: #0ff;
+  border: 1px solid #0ff;
+}
+#menuPanel h2, #settingsPanel h2 {
+  margin: 0 0 10px 0;
+  color: #ff0;
+  text-shadow: 0 0 5px #ff0, 0 0 15px #f0f;
 }
 
+/* Settings toggle button */
 #settingsBtn {
   position: fixed;
   top: 10px;
   right: 10px;
-  background: #222;
+  background: black;
+  border: 2px solid #0ff;
   z-index: 1500;
+}
+
+/* Admin trigger */
+#adminTrigger {
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  z-index: 500;
 }
 
 /* Effects */
@@ -107,6 +127,10 @@ button:hover {
 .chaos { animation: shake 0.3s infinite; }
 @keyframes shake { 0%{transform:translate(0);}25%{transform:translate(-2px,2px);}50%{transform:translate(2px,-2px);}75%{transform:translate(-2px,-2px);}100%{transform:translate(0);} }
 
+.pulse { animation: pulse 1.5s infinite; }
+@keyframes pulse { 0%{text-shadow:0 0 5px #f0f;}50%{text-shadow:0 0 25px #ff0;}100%{text-shadow:0 0 5px #f0f;} }
+
+/* Rain / Confetti */
 .rainDrop {
   position: fixed;
   animation: fall 4s linear forwards;
@@ -121,4 +145,15 @@ button:hover {
 @keyframes fall-spin {
   from{transform:translateY(0) rotate(0);}
   to{transform:translateY(100vh) rotate(720deg);}
+}
+
+/* Retro scanlines */
+.scanlines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.05) 0px,
+    rgba(255,255,255,0.05) 2px,
+    transparent 2px,
+    transparent 4px
+  );
 }
