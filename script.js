@@ -22,7 +22,7 @@ const backgrounds = {
   "Fire": "linear-gradient(160deg,#ff4e50,#f9d423)"
 };
 
-// random start background
+// random background on load
 function setRandomBackground() {
   let keys = Object.keys(backgrounds);
   let choice = keys[Math.floor(Math.random()*keys.length)];
@@ -44,6 +44,7 @@ clickBtn.addEventListener("click", () => {
     darkContainer.appendChild(dark);
 
     applyToggles(dark);
+
     counterBtn.textContent = `Clicks left: ${clicksLeft}`;
     if (clicksLeft === 0) window.location.href = "https://therapy.com";
   }
@@ -64,7 +65,7 @@ createKeypad();
 
 function handleKeypadPress(key) {
   if (key === "C") passwordInput = "";
-  else if (key === "E") { checkPassword(passwordInput); passwordInput = ""; }
+  else if (key === "E") { checkPassword(passwordInput); passwordInput = ""; keypad.style.display="none"; }
   else if (passwordInput.length < 4) passwordInput += key;
 }
 
@@ -87,7 +88,7 @@ function showMenu() {
   menuPanel.innerHTML = "<h2>Admin Menu</h2>";
   const features = [
     "Rainbow Cycle","Glow Aura","Rotate Spin","Floating Drift","Chaos Shake",
-    "Seal Spam","Dark Rain","Explosion Mode","Dark Trails","Invert Mode","Dark Spam"
+    "Seal Spam","Dark Rain"
   ];
   features.forEach(f=>{
     let btn = document.createElement("button");
@@ -98,29 +99,22 @@ function showMenu() {
     });
     menuPanel.appendChild(btn);
   });
-  // background choices
   Object.keys(backgrounds).forEach(bg=>{
     let btn = document.createElement("button");
     btn.textContent = "BG: "+bg;
-    btn.addEventListener("click", ()=>{
-      document.body.style.background = backgrounds[bg];
-    });
+    btn.addEventListener("click", ()=>{ document.body.style.background = backgrounds[bg]; });
     menuPanel.appendChild(btn);
   });
 }
 
-// TOGGLES
+// APPLY TOGGLES
 function applyToggles(el) {
   if(toggleStates["Rainbow Cycle"]) el.classList.add("rainbow");
   if(toggleStates["Glow Aura"]) el.classList.add("glow");
   if(toggleStates["Rotate Spin"]) el.classList.add("spin");
   if(toggleStates["Floating Drift"]) el.classList.add("float");
   if(toggleStates["Chaos Shake"]) el.classList.add("chaos");
-  if(toggleStates["Explosion Mode"]) {
-    el.style.position="absolute";
-    el.style.left=Math.random()*window.innerWidth+"px";
-    el.style.top=Math.random()*window.innerHeight+"px";
-  }
+
   if(toggleStates["Seal Spam"]) {
     let seal=document.createElement("span");
     seal.textContent="🦭";
@@ -130,6 +124,7 @@ function applyToggles(el) {
     document.body.appendChild(seal);
     setTimeout(()=>seal.remove(),2000);
   }
+
   if(toggleStates["Dark Rain"]) {
     let drop=document.createElement("div");
     drop.textContent="Dark";
@@ -137,26 +132,6 @@ function applyToggles(el) {
     drop.style.left=Math.random()*window.innerWidth+"px";
     document.body.appendChild(drop);
     setTimeout(()=>drop.remove(),4000);
-  }
-  if(toggleStates["Dark Trails"]) {
-    document.onmousemove = e=>{
-      let trail=document.createElement("span");
-      trail.textContent="dark";
-      trail.style.position="fixed";
-      trail.style.left=e.clientX+"px";
-      trail.style.top=e.clientY+"px";
-      trail.style.fontSize="10px";
-      document.body.appendChild(trail);
-      setTimeout(()=>trail.remove(),500);
-    };
-  }
-  if(toggleStates["Invert Mode"]) {
-    document.body.style.filter="invert(1)";
-  } else {
-    document.body.style.filter="invert(0)";
-  }
-  if(toggleStates["Dark Spam"]) {
-    setInterval(()=>clickBtn.click(),200);
   }
 }
 
