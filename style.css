@@ -101,6 +101,10 @@ button:hover {
   padding: 10px;
   z-index: 1600;
 }
+#settingsPanel h2 {
+  color: #0ff; /* Bright neon for visibility */
+  margin: 0 0 10px 0;
+}
 
 #settingsBtn {
   position: fixed;
