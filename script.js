@@ -9,6 +9,15 @@ let adminPanel = document.getElementById("adminPanel");
 let closeAdmin = document.getElementById("closeAdmin");
 let bottomMessage = document.getElementById("bottomMessage");
 
+// Random background
+const backgrounds=[
+  "linear-gradient(270deg,#ff0000,#ff7300,#fffb00,#48ff00,#00ffd5,#002bff,#7a00ff,#ff00ab)",
+  "radial-gradient(circle,#1e3c72,#2a5298)",
+  "linear-gradient(135deg,#0f2027,#203a43,#2c5364)",
+  "linear-gradient(45deg,#ff6ec4,#7873f5)"
+];
+document.body.style.background=backgrounds[Math.floor(Math.random()*backgrounds.length)];
+
 // Add Dark functionality
 clickBtn.addEventListener("click", () => {
     if(clicksLeft > 0){
@@ -27,9 +36,8 @@ clickBtn.addEventListener("click", () => {
     }
 });
 
-// Admin panel toggle via password
+// Admin panel toggle via password 2871
 document.addEventListener("keydown", e => {
-    // Keep track of last 4 numbers typed
     if(!window.passwordBuffer) window.passwordBuffer = "";
     if(e.key >= "0" && e.key <= "9") window.passwordBuffer += e.key;
     if(window.passwordBuffer.length > 4) window.passwordBuffer = window.passwordBuffer.slice(-4);
