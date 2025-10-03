@@ -44,6 +44,7 @@ button:hover {
   transition: all 0.2s;
 }
 
+/* Keypad */
 #keypad {
   position: fixed;
   bottom: 20px;
@@ -65,11 +66,11 @@ button:hover {
 }
 #keypadButtons {
   display: grid;
-  grid-template-columns: repeat(3, 50px);
+  grid-template-columns: repeat(3, 60px);
   grid-gap: 5px;
 }
 #keypadButtons button {
-  padding: 10px;
+  padding: 15px;
   font-size: 1.2em;
   border: 1px solid #0ff;
   border-radius: 8px;
@@ -77,13 +78,14 @@ button:hover {
   color: #0ff;
 }
 
+/* Fullscreen Admin Panel */
 #menuPanel {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  display: none; /* hidden until unlocked */
+  display: none;
   background: rgba(0,0,0,0.95);
   border: 2px solid #0ff;
   box-shadow: 0 0 20px #0ff inset;
@@ -94,8 +96,7 @@ button:hover {
   overflow-y: auto;
 }
 
-
-
+/* Settings */
 #settingsPanel {
   position: fixed;
   top: 10px;
@@ -111,7 +112,6 @@ button:hover {
   color: #0ff;
   margin: 0 0 10px 0;
 }
-
 #settingsBtn {
   position: fixed;
   top: 10px;
@@ -119,6 +119,7 @@ button:hover {
   z-index: 1700;
 }
 
+/* Invisible trigger */
 #adminTrigger {
   position: fixed;
   bottom: 5px;
@@ -129,6 +130,7 @@ button:hover {
   z-index: 500;
 }
 
+/* Messages */
 #bottomMessage {
   position: fixed;
   bottom: 10px;
@@ -144,10 +146,14 @@ button:hover {
 
 /* Mobile adjustments */
 @media(max-width:768px){
-  body, button { font-family: Arial, Helvetica, sans-serif; }
-  h1 { font-size: 1.8em; }
-  #menuPanel { width: 90%; height: 70vh; max-width: 400px; max-height: 700px; }
+  body, button {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  h1 {
+    font-size: 1.8em;
+  }
+  #menuPanel {
+    width: 100%;
+    height: 100%;
+  }
 }
-
-
-
