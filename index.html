@@ -1,24 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>le dark</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Seal_icon.png/600px-Seal_icon.png">
-  <!-- Load Comic Neue as fallback for Comic Sans -->
-  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+  <!-- Comic Neue fallback for Comic Sans look on mobile -->
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+  <!-- favicon (seal) - replace with your own if desired -->
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Seal_icon.png/600px-Seal_icon.png" type="image/png">
 </head>
 <body>
-  <h1 id="title">le dark</h1>
-  <div id="container"></div>
+  <header>
+    <h1 id="mainTitle">le dark</h1>
+  </header>
 
-  <button id="darkBtn">Add Dark</button>
-  <button id="clicksLeftBtn">1000 clicks left</button>
-  <button id="secretBtn"></button>
-  <div id="keypad" class="hidden"></div>
-  <div id="adminMessage"></div>
-  <button id="secretTopBtn" class="hidden">⚙️</button>
-  <div id="menuPanel"></div>
+  <main>
+    <div class="controls">
+      <button id="addDarkBtn" class="control-btn">Add Dark</button>
+      <button id="clicksLeftBtn" class="control-btn">Clicks Left: 1000</button>
+    </div>
+
+    <section id="stage">
+      <div id="container" aria-live="polite"></div>
+    </section>
+
+    <div id="adminArea">
+      <div id="adminMessage" class="hidden"></div>
+
+      <!-- keypad (hidden until long-press the secret area) -->
+      <div id="keypad" class="keypad hidden" aria-hidden="true">
+        <div id="passwordDisplay">----</div>
+        <div class="row">
+          <button class="key">1</button><button class="key">2</button><button class="key">3</button>
+        </div>
+        <div class="row">
+          <button class="key">4</button><button class="key">5</button><button class="key">6</button>
+        </div>
+        <div class="row">
+          <button class="key">7</button><button class="key">8</button><button class="key">9</button>
+        </div>
+        <div class="row">
+          <button class="wide key" id="clearKey">Clear</button>
+          <button class="key">0</button>
+          <button class="wide key" id="enterKey">Enter</button>
+        </div>
+      </div>
+
+      <!-- secret invisible button (long-press to show keypad) -->
+      <button id="secretCorner" aria-label="secret-area" class="secret-corner" title="secret"></button>
+
+      <!-- top-left secret button appears after secret feature unlocking -->
+      <button id="secretTopBtn" class="secret-top hidden" aria-hidden="true">✨ Secret Action</button>
+
+      <!-- admin menu (hidden until opened) -->
+      <div id="menuPanel" class="menu hidden" aria-hidden="true"></div>
+    </div>
+
+    <!-- canvas for light particles (GPU friendly) -->
+    <canvas id="particleCanvas" class="particles" aria-hidden="true"></canvas>
+  </main>
 
   <script src="script.js"></script>
 </body>
