@@ -21,16 +21,14 @@ const backgrounds = [
   "linear-gradient(160deg,#ff4e50,#f9d423)",
   "linear-gradient(60deg,#232526,#414345)"
 ];
-let currentBackground = "";
 
+// random background on load
 function setRandomBackground() {
-  currentBackground = backgrounds[Math.floor(Math.random() * backgrounds.length)];
-  document.body.style.background = currentBackground;
+  let bg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+  document.body.style.background = bg;
   document.body.style.backgroundSize = "400% 400%";
 }
 setRandomBackground();
-
-document.body.style.userSelect = "none";
 
 // CLICK HANDLER
 clickBtn.addEventListener("click", () => {
@@ -54,7 +52,7 @@ clickBtn.addEventListener("click", () => {
   }
 });
 
-// KEYPAD
+// KEYPAD CREATION
 function createKeypad() {
   keypad.innerHTML = "";
   let keys = ["1","2","3","4","5","6","7","8","9","C","0","E"];
@@ -78,32 +76,21 @@ function handleKeypadPress(key) {
   }
 }
 
-// PASSWORD CHECKS
+// PASSWORD CHECK
 function checkPassword(pw) {
   if (pw === "8440") {
-    adminUnlocked = !adminUnlocked;
-    if (adminUnlocked) {
-      title.textContent = "le dark ✅";
-      secretTopBtn.style.display = "block";
-      confettiExplosion();
-    } else {
-      title.textContent = "le dark";
-      menuPanel.style.display = "none";
-    }
+    adminUnlocked = true;
+    title.textContent = "le dark ✅";
+    secretTopBtn.style.display = "block"; // show ☰
+    confettiExplosion();
   } else if (pw === "2871" && adminUnlocked) {
-    secretTopBtn.style.display = "block";
+    // only 2871 toggles menu
+    menuPanel.style.display = (menuPanel.style.display === "block") ? "none" : "block";
+    if (menuPanel.style.display === "block") showMenu();
   } else {
     alert("Denied!");
   }
 }
-
-// SECRET BUTTON
-secretTopBtn.addEventListener("click", () => {
-  if (adminUnlocked) {
-    menuPanel.style.display = (menuPanel.style.display === "block") ? "none" : "block";
-    showMenu();
-  }
-});
 
 // ADMIN MENU
 function showMenu() {
@@ -123,6 +110,7 @@ function showMenu() {
     menuPanel.appendChild(btn);
   });
 
+  // Background selector
   let bgLabel = document.createElement("p");
   bgLabel.textContent = "Background Themes:";
   menuPanel.appendChild(bgLabel);
@@ -136,7 +124,7 @@ function showMenu() {
   });
 }
 
-// TOGGLES
+// APPLY TOGGLES
 function applyToggles(el) {
   if(toggleStates["Rainbow Cycle"]) el.classList.add("rainbow");
   if(toggleStates["Glow Aura"]) el.classList.add("glow");
