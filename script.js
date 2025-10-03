@@ -10,7 +10,7 @@ let keypad = document.getElementById("keypad");
 let keypadDisplay = document.getElementById("keypadDisplay");
 let keypadButtons = document.getElementById("keypadButtons");
 let menuPanel = document.getElementById("menuPanel");
-let closeAdmin = document.getElementById("closeAdmin");
+let closeMenu = document.getElementById("closeMenu");
 let settingsBtn = document.getElementById("settingsBtn");
 let settingsPanel = document.getElementById("settingsPanel");
 let title = document.getElementById("title");
@@ -79,29 +79,21 @@ trigger.addEventListener(isMobile?"click":"mousedown",()=>{
   trigger.addEventListener("mouseup",()=>clearTimeout(holdTimer));
 });
 
-// Settings menu
-settingsBtn.addEventListener("click",()=>settingsPanel.style.display=(settingsPanel.style.display==="block")?"none":"block");
-settingsPanel.innerHTML = `
-  <h2>Settings</h2>
-  <button id="toggleCounter">Toggle Counter</button>
-  <button id="toggleSound">Toggle Sound Effects</button>
-  <button id="toggleMusic">Toggle Music</button>
-`;
+// Settings toggle
+settingsBtn.addEventListener("click",()=>{
+  settingsPanel.style.display=(settingsPanel.style.display==="block")?"none":"block";
+});
 
-// Counter toggle
+// Attach settings buttons
 document.getElementById("toggleCounter").addEventListener("click",()=>{
   toggleStates.Counter=!toggleStates.Counter;
   counterBtn.style.display = toggleStates.Counter ? "inline-block" : "none";
   showMessage("Counter "+(toggleStates.Counter?"ON":"OFF"));
 });
-
-// Sound toggle
 document.getElementById("toggleSound").addEventListener("click",()=>{
   toggleStates.Sound=!toggleStates.Sound;
   showMessage("Sound Effects "+(toggleStates.Sound?"ON":"OFF"));
 });
-
-// Music toggle
 document.getElementById("toggleMusic").addEventListener("click",()=>{
   toggleStates.Music=!toggleStates.Music;
   showMessage("Music "+(toggleStates.Music?"ON":"OFF"));
@@ -124,10 +116,10 @@ function checkPassword(pw){
   }
 }
 
-// Close admin panel
-closeAdmin.addEventListener("click",()=>{
-  menuPanel.style.display="none";
+// Close admin panel with ❌
+closeMenu.addEventListener("click",()=>{
   menuVisible=false;
+  menuPanel.style.display="none";
 });
 
 // Message helper
