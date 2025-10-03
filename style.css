@@ -1,3 +1,4 @@
+/* BASIC BODY */
 body {
   margin: 0;
   font-family: "Press Start 2P", "Comic Neue", cursive, sans-serif;
@@ -8,6 +9,7 @@ body {
   user-select: none;
 }
 
+/* TITLE */
 h1 {
   font-size: 2.2em;
   margin: 20px;
@@ -15,6 +17,7 @@ h1 {
   text-shadow: 0 0 10px #0ff, 0 0 20px #f0f, 0 0 30px #ff0;
 }
 
+/* BUTTONS */
 button {
   padding: 10px 20px;
   margin: 10px;
@@ -33,6 +36,7 @@ button:hover {
   box-shadow: 0 0 10px #0ff;
 }
 
+/* DARK WORDS */
 #darkContainer {
   margin-top: 20px;
   min-height: 200px;
@@ -43,7 +47,7 @@ button:hover {
   font-size: 1.4em;
 }
 
-/* Keypad */
+/* KEYPAD */
 #keypad {
   position: fixed;
   bottom: 20px;
@@ -70,7 +74,7 @@ button:hover {
   border: 1px solid #0ff;
 }
 
-/* Panels */
+/* PANELS */
 #menuPanel, #settingsPanel {
   position: fixed;
   top: 60px;
@@ -97,7 +101,7 @@ button:hover {
   text-shadow: 0 0 5px #ff0, 0 0 15px #f0f;
 }
 
-/* Settings toggle button */
+/* SETTINGS BUTTON */
 #settingsBtn {
   position: fixed;
   top: 10px;
@@ -107,7 +111,7 @@ button:hover {
   z-index: 1500;
 }
 
-/* Admin trigger */
+/* ADMIN TRIGGER */
 #adminTrigger {
   position: fixed;
   bottom: 5px;
@@ -118,7 +122,7 @@ button:hover {
   z-index: 500;
 }
 
-/* Bottom message */
+/* BOTTOM MESSAGE */
 #bottomMessage {
   position: fixed;
   bottom: 10px;
@@ -132,37 +136,23 @@ button:hover {
   font-size: 0.8em;
 }
 
-/* Effects (same as previous) */
+/* EFFECTS */
 .rainbow { animation: rainbow 3s linear infinite; }
-@keyframes rainbow { 0%{color:red;}25%{color:yellow;}50%{color:lime;}75%{color:cyan;}100%{color:red;} }
-
+@keyframes rainbow {0%{color:red;}25%{color:yellow;}50%{color:lime;}75%{color:cyan;}100%{color:red;}}
 .glow { text-shadow: 0 0 10px white, 0 0 20px #0ff; }
 .spin { animation: spin 3s linear infinite; }
 @keyframes spin { from{transform:rotate(0);}to{transform:rotate(360deg);} }
-
 .float { animation: float 4s ease-in-out infinite; }
 @keyframes float { 0%{transform:translateY(0);}50%{transform:translateY(-20px);}100%{transform:translateY(0);} }
-
 .chaos { animation: shake 0.3s infinite; }
-@keyframes shake { 0%{transform:translate(0);}25%{transform:translate(-2px,2px);}50%{transform:translate(2px,-2px);}75%{transform:translate(-2px,-2px);}100%{transform:translate(0);} }
-
+@keyframes shake {0%{transform:translate(0);}25%{transform:translate(-2px,2px);}50%{transform:translate(2px,-2px);}75%{transform:translate(-2px,-2px);}100%{transform:translate(0);} }
 .pulse { animation: pulse 1.5s infinite; }
 @keyframes pulse { 0%{text-shadow:0 0 5px #f0f;}50%{text-shadow:0 0 25px #ff0;}100%{text-shadow:0 0 5px #f0f;} }
 
-.rainDrop {
-  position: fixed;
-  animation: fall 4s linear forwards;
-}
+.rainDrop { position: fixed; animation: fall 4s linear forwards; }
 @keyframes fall { from{top:-50px;}to{top:100vh;} }
-
-.confetti {
-  position: fixed;
-  width: 10px; height: 10px;
-  animation: fall-spin 1.5s ease-out forwards;
-}
+.confetti { position: fixed; width: 10px; height: 10px; animation: fall-spin 1.5s ease-out forwards; }
 @keyframes fall-spin { from{transform:translateY(0) rotate(0);} to{transform:translateY(100vh) rotate(720deg);} }
 
 /* Retro scanlines */
-.scanlines {
-  background-image: repeating-linear-gradient(to bottom, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 2px, transparent 2px, transparent 4px);
-}
+.scanlines { background-image: repeating-linear-gradient(to bottom, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 2px, transparent 2px, transparent 4px);}
