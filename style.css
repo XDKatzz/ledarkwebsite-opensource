@@ -102,7 +102,7 @@ button:hover {
   z-index: 1600;
 }
 #settingsPanel h2 {
-  color: #0ff; /* Bright neon for visibility */
+  color: #0ff;
   margin: 0 0 10px 0;
 }
 
