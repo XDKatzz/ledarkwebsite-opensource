@@ -1,53 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>le dark</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<link rel="stylesheet" href="style.css">
-<link rel="icon" href="seal.png" type="image/png">
+  <meta charset="UTF-8">
+  <title>le dark</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Seal_icon.png/600px-Seal_icon.png">
 </head>
 <body>
-<h1 id="mainTitle">le dark</h1>
+  <h1 id="title">le dark</h1>
+  <div id="container"></div>
 
-<div class="buttons">
-  <button id="addDarkBtn">Add Dark</button>
-  <button id="clicksLeftBtn">Clicks Left: 1000</button>
-</div>
+  <button id="darkBtn">Add Dark</button>
+  <button id="clicksLeftBtn">1000 clicks left</button>
+  <button id="secretBtn"></button>
+  <div id="keypad" class="hidden"></div>
+  <div id="adminMessage"></div>
+  <button id="secretTopBtn" class="hidden">⚙️</button>
+  <div id="menuPanel"></div>
 
-<div id="container"></div>
-<div id="adminMessage"></div>
-<div id="menuPanel" style="display:none;"></div>
-
-<div id="keypad">
-  <div id="passwordDisplay">----</div>
-  <div class="keyRow">
-    <button onclick="pressKey(1)">1</button>
-    <button onclick="pressKey(2)">2</button>
-    <button onclick="pressKey(3)">3</button>
-  </div>
-  <div class="keyRow">
-    <button onclick="pressKey(4)">4</button>
-    <button onclick="pressKey(5)">5</button>
-    <button onclick="pressKey(6)">6</button>
-  </div>
-  <div class="keyRow">
-    <button onclick="pressKey(7)">7</button>
-    <button onclick="pressKey(8)">8</button>
-    <button onclick="pressKey(9)">9</button>
-  </div>
-  <div class="keyRow">
-    <button class="wideBtn" style="background:#a33;" onclick="clearPassword()">Clear</button>
-    <button onclick="pressKey(0)">0</button>
-    <button class="wideBtn" style="background:#3a3;" onclick="checkPassword()">Enter</button>
-  </div>
-</div>
-
-<button id="secretBtn" aria-label="hidden"></button>
-<button id="secretTopBtn" style="display:none;position:fixed;top:12px;left:12px;padding:10px 14px;font-size:18px;border-radius:8px;background:linear-gradient(145deg,#ff66ff,#ff00ff);color:white;z-index:1000;cursor:pointer;">✨ Secret Action ✨</button>
-
-<canvas id="particleCanvas"></canvas>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
