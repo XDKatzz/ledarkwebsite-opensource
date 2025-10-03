@@ -8,7 +8,6 @@ body {
   transition: background 1s ease;
 }
 
-/* TITLE */
 h1 {
   font-size: 2.2em;
   margin: 20px;
@@ -16,7 +15,6 @@ h1 {
   text-shadow: 0 0 10px #0ff,0 0 20px #f0f,0 0 30px #ff0;
 }
 
-/* BUTTONS */
 button {
   padding: 10px 20px;
   margin: 10px;
@@ -35,7 +33,6 @@ button:hover {
   box-shadow: 0 0 10px #0ff;
 }
 
-/* DARK WORDS */
 #darkContainer {
   margin-top: 20px;
   min-height: 200px;
@@ -47,7 +44,6 @@ button:hover {
   transition: all 0.2s;
 }
 
-/* KEYBOARD */
 #keypad {
   position: fixed;
   bottom: 20px;
@@ -81,21 +77,19 @@ button:hover {
   color: #0ff;
 }
 
-/* ADMIN PANEL */
 #menuPanel {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
   display: none;
-  background: rgba(0,0,0,0.9);
+  background: rgba(0,0,0,0.95);
   border: 2px solid #0ff;
   padding: 15px;
   border-radius: 10px;
   z-index: 1500;
 }
 
-/* SETTINGS PANEL */
 #settingsPanel {
   position: fixed;
   top: 10px;
@@ -108,7 +102,6 @@ button:hover {
   z-index: 1600;
 }
 
-/* SETTINGS BUTTON */
 #settingsBtn {
   position: fixed;
   top: 10px;
@@ -116,7 +109,6 @@ button:hover {
   z-index: 1700;
 }
 
-/* ADMIN TRIGGER */
 #adminTrigger {
   position: fixed;
   bottom: 5px;
@@ -127,7 +119,6 @@ button:hover {
   z-index: 500;
 }
 
-/* BOTTOM MESSAGE */
 #bottomMessage {
   position: fixed;
   bottom: 10px;
@@ -141,7 +132,6 @@ button:hover {
   font-size: 0.8em;
 }
 
-/* VISUAL EFFECTS */
 .rainbow { animation: rainbow 3s linear infinite; }
 @keyframes rainbow {0%{color:red;}25%{color:yellow;}50%{color:lime;}75%{color:cyan;}100%{color:red;}}
 .glow { text-shadow: 0 0 10px white,0 0 20px #0ff;}
