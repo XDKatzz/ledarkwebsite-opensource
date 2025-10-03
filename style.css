@@ -90,13 +90,19 @@ button:hover {
   z-index: 1500;
   width: 90%;
   max-width: 400px;
+  min-height: 250px;       /* ensures it’s not too short */
+  overflow-y: auto;        /* scroll if content is long */
   color: #0ff;
   text-align: center;
+  box-shadow: 0 0 20px #0ff inset;
 }
 #menuPanel button {
   width: 80%;
   margin: 5px 0;
+  font-size: 1em;
+  padding: 10px;
 }
+
 
 #settingsPanel {
   position: fixed;
@@ -170,3 +176,4 @@ button:hover {
     padding: 15px;
   }
 }
+
