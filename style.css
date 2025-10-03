@@ -1,9 +1,9 @@
 body {
   margin: 0;
   font-family: "Comic Sans MS", "Comic Neue", cursive, sans-serif;
-  overflow-x: hidden;
-  transition: background 2s;
   text-align: center;
+  transition: background 1s ease;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -28,13 +28,11 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* Dark container */
 #darkContainer {
   margin-top: 20px;
   min-height: 200px;
 }
 
-/* Dark word */
 .darkWord {
   display: inline-block;
   margin: 5px;
@@ -70,7 +68,7 @@ button:hover {
   z-index: 500;
 }
 
-/* Menu */
+/* Panels */
 #menuPanel, #settingsPanel {
   position: fixed;
   top: 60px;
@@ -87,7 +85,6 @@ button:hover {
   background: #222;
 }
 
-/* Settings */
 #settingsBtn {
   position: fixed;
   top: 10px;
@@ -96,7 +93,7 @@ button:hover {
   z-index: 1500;
 }
 
-/* Animations */
+/* Effects */
 .rainbow { animation: rainbow 3s linear infinite; }
 @keyframes rainbow { 0%{color:red;}25%{color:yellow;}50%{color:lime;}75%{color:cyan;}100%{color:red;} }
 
