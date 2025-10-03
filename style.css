@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: "Comic Sans MS", cursive;
+  font-family: "Comic Neue", "Comic Sans MS", cursive;
   text-align: center;
   overflow-x: hidden;
   background: linear-gradient(45deg, #ffccff, #ccffff);
@@ -20,7 +20,7 @@ body {
 }
 
 #darkBtn, #clicksLeftBtn {
-  font-family: "Comic Sans MS", cursive;
+  font-family: "Comic Neue", "Comic Sans MS", cursive;
   margin: 8px;
   padding: 12px 20px;
   border: none;
@@ -35,7 +35,7 @@ body {
 }
 
 .darkWord {
-  font-family: "Comic Sans MS", cursive;
+  font-family: "Comic Neue", "Comic Sans MS", cursive;
   font-size: 24px;
   display: inline-block;
   margin: 6px;
@@ -54,15 +54,17 @@ body {
 }
 
 #keypad {
-  display: grid;
+  display: none; /* completely hidden by default */
   grid-template-columns: repeat(3, 60px);
   gap: 6px;
   justify-content: center;
   margin-top: 20px;
 }
 
+#keypad.show { display: grid; }
+
 .key {
-  font-family: "Comic Sans MS", cursive;
+  font-family: "Comic Neue", "Comic Sans MS", cursive;
   padding: 12px;
   font-size: 20px;
   border: none;
@@ -76,7 +78,7 @@ body {
   background: rgba(255,255,255,0.9);
   padding: 12px;
   border-radius: 8px;
-  font-family: "Comic Sans MS", cursive;
+  font-family: "Comic Neue", "Comic Sans MS", cursive;
 }
 
 #secretTopBtn {
