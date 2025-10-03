@@ -17,8 +17,9 @@ let trigger = document.getElementById("adminTrigger");
 let bottomMessage = document.getElementById("bottomMessage");
 
 const isMobile = /Mobi|Android/i.test(navigator.userAgent);
-const toggleStates = { Counter:true, Rainbow:false, Glow:false, Spin:false, Float:false, Chaos:false, Pulse:false };
+const toggleStates = { Counter:true, Rainbow:false, Glow:false, Spin:false, Float:false, Chaos:false, Pulse:false, Confetti:false, Rain:false, Scanlines:false };
 
+// Backgrounds
 const backgrounds = {
   "Rainbow Wave":"linear-gradient(270deg,#ff0000,#ff7300,#fffb00,#48ff00,#00ffd5,#002bff,#7a00ff,#ff00ab)",
   "Space Grid":"radial-gradient(circle,#1e3c72,#2a5298)",
@@ -28,14 +29,13 @@ const backgrounds = {
   "Lava Fire":"linear-gradient(160deg,#ff4e50,#f9d423)"
 };
 
-// Set random background
 function setRandomBackground(){ 
   const keys = Object.keys(backgrounds);
   document.body.style.background = backgrounds[keys[Math.floor(Math.random()*keys.length)]]; 
 }
 setRandomBackground();
 
-// CREATE KEYPAD
+// Keypad
 function createKeypad(){
   keypadButtons.innerHTML="";
   let keys=["1","2","3","4","5","6","7","8","9","C","0","E"];
@@ -48,7 +48,6 @@ function createKeypad(){
 }
 createKeypad();
 
-// HANDLE KEYPAD
 function handleKeypadPress(key){
   if(key==="C") passwordInput="";
   else if(key==="E"){ checkPassword(passwordInput); passwordInput=""; keypadDisplay.textContent=""; keypad.style.display="none";}
@@ -56,7 +55,7 @@ function handleKeypadPress(key){
   keypadDisplay.textContent=passwordInput;
 }
 
-// CHECK PASSWORDS
+// Passwords
 function checkPassword(pw){
   if(pw==="8440"){ 
     adminUnlocked=!adminUnlocked; 
@@ -72,10 +71,11 @@ function checkPassword(pw){
   else showBottomMessage("Denied!");
 }
 
-// CLICK BUTTON
+// Add Dark
 clickBtn.addEventListener("click",()=>{
   if(clicksLeft>0){
     count++; clicksLeft--;
+
     let dark=document.createElement("span");
     dark.classList.add("darkWord");
     dark.textContent="Dark";
@@ -87,8 +87,17 @@ clickBtn.addEventListener("click",()=>{
     // Font change every 50 clicks
     if(count%50===0) dark.style.fontFamily = "Courier, monospace";
 
+    // Random neon color
+    dark.style.color = `hsl(${Math.random()*360},100%,50%)`;
+
     darkContainer.appendChild(dark);
     applyToggles(dark);
+
+    // Confetti
+    if(toggleStates.Confetti) createConfetti();
+
+    // Rain
+    if(toggleStates.Rain) createRain();
 
     counterBtn.textContent=`Clicks left: ${clicksLeft}`;
     if(!toggleStates.Counter) counterBtn.style.display="none";
@@ -97,14 +106,14 @@ clickBtn.addEventListener("click",()=>{
   }
 });
 
-// BOTTOM MESSAGE
+// Bottom message
 function showBottomMessage(msg){
   bottomMessage.textContent=msg;
   bottomMessage.style.display="block";
   setTimeout(()=>bottomMessage.style.display="none",1500);
 }
 
-// SETTINGS PANEL
+// Settings panel
 settingsBtn.addEventListener("click",()=>settingsPanel.style.display=(settingsPanel.style.display==="block")?"none":"block"));
 settingsPanel.innerHTML="<h2>Settings</h2>";
 settingsPanel.innerHTML+="<button id='toggleCounter'>Toggle Counter</button>";
@@ -113,15 +122,16 @@ document.getElementById("toggleCounter").addEventListener("click",()=>{
   showBottomMessage("Counter "+(toggleStates.Counter?"ON":"OFF"));
 });
 
-// ADMIN MENU
+// Admin menu
 function showMenu(){
   menuPanel.innerHTML="<h2>Admin Menu</h2>";
-  const features=["Rainbow","Glow","Spin","Float","Chaos","Pulse"];
+  const features=["Rainbow","Glow","Spin","Float","Chaos","Pulse","Confetti","Rain","Scanlines"];
   features.forEach(f=>{
     let btn=document.createElement("button");
     btn.textContent=f+" "+(toggleStates[f]?"✅":"❌");
     btn.addEventListener("click",()=>{
       toggleStates[f]=!toggleStates[f];
+      if(f==="Scanlines") document.body.classList.toggle("scanlines",toggleStates[f]);
       showMenu();
     });
     menuPanel.appendChild(btn);
@@ -134,8 +144,9 @@ function showMenu(){
   });
 }
 
-// APPLY EFFECTS
+// Apply toggles to dark words
 function applyToggles(el){
+  el.classList.remove("rainbow","glow","spin","float","chaos","pulse");
   if(toggleStates.Rainbow) el.classList.add("rainbow");
   if(toggleStates.Glow) el.classList.add("glow");
   if(toggleStates.Spin) el.classList.add("spin");
@@ -144,7 +155,31 @@ function applyToggles(el){
   if(toggleStates.Pulse) el.classList.add("pulse");
 }
 
-// ADMIN TRIGGER
+// Confetti
+function createConfetti(){
+  for(let i=0;i<10;i++){
+    let conf = document.createElement("div");
+    conf.classList.add("confetti");
+    conf.style.left=Math.random()*window.innerWidth+"px";
+    conf.style.backgroundColor=`hsl(${Math.random()*360},100%,50%)`;
+    conf.style.width="5px"; conf.style.height="10px";
+    document.body.appendChild(conf);
+    setTimeout(()=>conf.remove(),2000);
+  }
+}
+
+// Rain
+function createRain(){
+  let drop = document.createElement("div");
+  drop.textContent="Dark";
+  drop.classList.add("rainDrop");
+  drop.style.left=Math.random()*window.innerWidth+"px";
+  drop.style.color=`hsl(${Math.random()*360},100%,50%)`;
+  document.body.appendChild(drop);
+  setTimeout(()=>drop.remove(),4000);
+}
+
+// Admin trigger
 let holdTimer;
 trigger.addEventListener(isMobile?"click":"mousedown",()=>{
   if(isMobile){ keypad.style.display="grid"; return; }
