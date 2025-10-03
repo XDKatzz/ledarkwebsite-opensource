@@ -15,7 +15,6 @@ h1 {
   text-shadow: 0 0 10px #0ff, 0 0 20px #f0f, 0 0 30px #ff0;
 }
 
-/* Buttons */
 button {
   padding: 10px 20px;
   margin: 10px;
@@ -34,7 +33,6 @@ button:hover {
   box-shadow: 0 0 10px #0ff;
 }
 
-/* Dark words */
 #darkContainer {
   margin-top: 20px;
   min-height: 200px;
@@ -59,6 +57,13 @@ button:hover {
   border: 2px solid #0ff;
   box-shadow: 0 0 20px #0ff;
   z-index: 2000;
+  text-align: center;
+}
+#keypadDisplay {
+  margin-bottom: 5px;
+  min-height: 20px;
+  color: #0ff;
+  font-size: 1em;
 }
 #keypad button {
   font-size: 1.2em;
@@ -113,7 +118,21 @@ button:hover {
   z-index: 500;
 }
 
-/* Effects */
+/* Bottom message */
+#bottomMessage {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.7);
+  color: #0ff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: none;
+  font-size: 0.8em;
+}
+
+/* Effects (same as previous) */
 .rainbow { animation: rainbow 3s linear infinite; }
 @keyframes rainbow { 0%{color:red;}25%{color:yellow;}50%{color:lime;}75%{color:cyan;}100%{color:red;} }
 
@@ -130,7 +149,6 @@ button:hover {
 .pulse { animation: pulse 1.5s infinite; }
 @keyframes pulse { 0%{text-shadow:0 0 5px #f0f;}50%{text-shadow:0 0 25px #ff0;}100%{text-shadow:0 0 5px #f0f;} }
 
-/* Rain / Confetti */
 .rainDrop {
   position: fixed;
   animation: fall 4s linear forwards;
@@ -142,18 +160,9 @@ button:hover {
   width: 10px; height: 10px;
   animation: fall-spin 1.5s ease-out forwards;
 }
-@keyframes fall-spin {
-  from{transform:translateY(0) rotate(0);}
-  to{transform:translateY(100vh) rotate(720deg);}
-}
+@keyframes fall-spin { from{transform:translateY(0) rotate(0);} to{transform:translateY(100vh) rotate(720deg);} }
 
 /* Retro scanlines */
 .scanlines {
-  background-image: repeating-linear-gradient(
-    to bottom,
-    rgba(255,255,255,0.05) 0px,
-    rgba(255,255,255,0.05) 2px,
-    transparent 2px,
-    transparent 4px
-  );
+  background-image: repeating-linear-gradient(to bottom, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 2px, transparent 2px, transparent 4px);
 }
