@@ -79,15 +79,22 @@ button:hover {
 
 #menuPanel {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;    /* full viewport width */
-  height: 100vh;   /* full viewport height */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* center it */
+  width: 80vw;   /* 80% of viewport width */
+  max-width: 600px; /* optional max width */
+  height: 80vh;  /* 80% of viewport height */
+  max-height: 800px; /* optional max height */
   display: none;
   background: rgba(0,0,0,0.95);
-  border: none;     /* remove border for exact full-screen */
+  border: 2px solid #0ff;
+  border-radius: 15px;
   z-index: 1500;
+  padding: 20px; /* spacing inside for future options */
+  overflow-y: auto; /* scroll if content exceeds height */
 }
+
 
 
 #settingsPanel {
@@ -149,4 +156,5 @@ button:hover {
     height: 100%;
   }
 }
+
 
