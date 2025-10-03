@@ -2,29 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Le Dark ✅</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>le dark</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Seal_icon_cartoon.svg/1024px-Seal_icon_cartoon.svg.png">
 </head>
 <body>
-  <h1 id="title">le dark ✅</h1>
-  <div id="settings">
-    <button id="darkBtn" class="btn">Add Dark</button>
-    <span id="counterDisplay">Clicks left: 1000</span>
-    <button id="sfxBtn" class="btn">Sound FX: OFF</button>
-    <button id="musicBtn" class="btn">Music: OFF</button>
+  <h1 id="title">le dark</h1>
+
+  <button id="clickBtn">Add Dark</button>
+  <button id="counterBtn">Clicks left: 1000</button>
+  <div id="darkContainer"></div>
+
+  <!-- Settings -->
+  <button id="settingsBtn">⚙️</button>
+  <div id="settingsPanel"></div>
+
+  <!-- Invisible admin trigger -->
+  <div id="adminTrigger"></div>
+
+  <!-- Keypad -->
+  <div id="keypad">
+    <div id="keypadDisplay"></div>
+    <div id="keypadButtons"></div>
   </div>
 
-  <!-- Admin Panel -->
-  <div id="adminPanel">
-    <button id="adminClose">X</button>
-    <div id="keypadDisplay"></div>
-    <div id="keypad">
-      <button>1</button><button>2</button><button>3</button>
-      <button>4</button><button>5</button><button>6</button>
-      <button>7</button><button>8</button><button>9</button>
-      <button>C</button><button>0</button><button>E</button>
-    </div>
+  <!-- Fullscreen Admin Panel -->
+  <div id="menuPanel">
+    <button id="closeAdmin">X</button>
   </div>
+
+  <!-- Bottom messages -->
+  <div id="bottomMessage"></div>
 
   <script src="script.js"></script>
 </body>
