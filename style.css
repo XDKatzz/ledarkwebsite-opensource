@@ -1,12 +1,11 @@
-/* BASIC BODY */
 body {
   margin: 0;
   font-family: "Press Start 2P", "Comic Neue", cursive, sans-serif;
-  text-align: center;
   background: black;
-  transition: background 1s ease;
+  text-align: center;
   overflow-x: hidden;
   user-select: none;
+  transition: background 1s ease;
 }
 
 /* TITLE */
@@ -14,7 +13,7 @@ h1 {
   font-size: 2.2em;
   margin: 20px;
   color: #0ff;
-  text-shadow: 0 0 10px #0ff, 0 0 20px #f0f, 0 0 30px #ff0;
+  text-shadow: 0 0 10px #0ff,0 0 20px #f0f,0 0 30px #ff0;
 }
 
 /* BUTTONS */
@@ -45,60 +44,68 @@ button:hover {
   display: inline-block;
   margin: 5px;
   font-size: 1.4em;
+  transition: all 0.2s;
 }
 
-/* KEYPAD */
+/* KEYBOARD */
 #keypad {
   position: fixed;
   bottom: 20px;
   right: 20px;
   display: none;
-  grid-template-columns: repeat(3, 60px);
-  grid-gap: 10px;
-  background: rgba(0,0,0,0.9);
-  padding: 15px;
-  border-radius: 15px;
+  background: rgba(0,0,0,0.95);
   border: 2px solid #0ff;
-  box-shadow: 0 0 20px #0ff;
+  border-radius: 15px;
+  padding: 10px;
   z-index: 2000;
   text-align: center;
 }
 #keypadDisplay {
+  height: 25px;
   margin-bottom: 5px;
-  min-height: 20px;
   color: #0ff;
   font-size: 1em;
+  text-align: center;
 }
-#keypad button {
+#keypadButtons {
+  display: grid;
+  grid-template-columns: repeat(3, 50px);
+  grid-gap: 5px;
+}
+#keypadButtons button {
+  padding: 10px;
   font-size: 1.2em;
   border: 1px solid #0ff;
-}
-
-/* PANELS */
-#menuPanel, #settingsPanel {
-  position: fixed;
-  top: 60px;
-  right: 20px;
-  display: none;
-  flex-direction: column;
-  background: repeating-linear-gradient(45deg, #000 0px, #000 10px, #111 10px, #111 20px);
-  border: 2px solid #0ff;
-  box-shadow: 0 0 20px #0ff;
-  padding: 15px;
-  border-radius: 10px;
-  z-index: 1000;
-  font-size: 0.8em;
-}
-#menuPanel button, #settingsPanel button {
-  margin: 5px 0;
+  border-radius: 8px;
   background: black;
   color: #0ff;
-  border: 1px solid #0ff;
 }
-#menuPanel h2, #settingsPanel h2 {
-  margin: 0 0 10px 0;
-  color: #ff0;
-  text-shadow: 0 0 5px #ff0, 0 0 15px #f0f;
+
+/* ADMIN PANEL */
+#menuPanel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  display: none;
+  background: rgba(0,0,0,0.9);
+  border: 2px solid #0ff;
+  padding: 15px;
+  border-radius: 10px;
+  z-index: 1500;
+}
+
+/* SETTINGS PANEL */
+#settingsPanel {
+  position: fixed;
+  top: 10px;
+  right: 50px;
+  display: none;
+  background: rgba(0,0,0,0.85);
+  border: 2px solid #0ff;
+  border-radius: 10px;
+  padding: 10px;
+  z-index: 1600;
 }
 
 /* SETTINGS BUTTON */
@@ -106,9 +113,7 @@ button:hover {
   position: fixed;
   top: 10px;
   right: 10px;
-  background: black;
-  border: 2px solid #0ff;
-  z-index: 1500;
+  z-index: 1700;
 }
 
 /* ADMIN TRIGGER */
@@ -136,23 +141,15 @@ button:hover {
   font-size: 0.8em;
 }
 
-/* EFFECTS */
+/* VISUAL EFFECTS */
 .rainbow { animation: rainbow 3s linear infinite; }
 @keyframes rainbow {0%{color:red;}25%{color:yellow;}50%{color:lime;}75%{color:cyan;}100%{color:red;}}
-.glow { text-shadow: 0 0 10px white, 0 0 20px #0ff; }
-.spin { animation: spin 3s linear infinite; }
+.glow { text-shadow: 0 0 10px white,0 0 20px #0ff;}
+.spin { animation: spin 3s linear infinite;}
 @keyframes spin { from{transform:rotate(0);}to{transform:rotate(360deg);} }
-.float { animation: float 4s ease-in-out infinite; }
+.float { animation: float 4s ease-in-out infinite;}
 @keyframes float { 0%{transform:translateY(0);}50%{transform:translateY(-20px);}100%{transform:translateY(0);} }
-.chaos { animation: shake 0.3s infinite; }
+.chaos { animation: shake 0.3s infinite;}
 @keyframes shake {0%{transform:translate(0);}25%{transform:translate(-2px,2px);}50%{transform:translate(2px,-2px);}75%{transform:translate(-2px,-2px);}100%{transform:translate(0);} }
-.pulse { animation: pulse 1.5s infinite; }
-@keyframes pulse { 0%{text-shadow:0 0 5px #f0f;}50%{text-shadow:0 0 25px #ff0;}100%{text-shadow:0 0 5px #f0f;} }
-
-.rainDrop { position: fixed; animation: fall 4s linear forwards; }
-@keyframes fall { from{top:-50px;}to{top:100vh;} }
-.confetti { position: fixed; width: 10px; height: 10px; animation: fall-spin 1.5s ease-out forwards; }
-@keyframes fall-spin { from{transform:translateY(0) rotate(0);} to{transform:translateY(100vh) rotate(720deg);} }
-
-/* Retro scanlines */
-.scanlines { background-image: repeating-linear-gradient(to bottom, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 2px, transparent 2px, transparent 4px);}
+.pulse { animation: pulse 1.5s infinite;}
+@keyframes pulse {0%{text-shadow:0 0 5px #f0f;}50%{text-shadow:0 0 25px #ff0;}100%{text-shadow:0 0 5px #f0f;}}
