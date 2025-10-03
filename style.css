@@ -86,14 +86,15 @@ button:hover {
   max-width: 600px;
   height: 80vh;
   max-height: 800px;
-  display: none;
+  display: none; /* hidden until password unlock */
   background: rgba(0,0,0,0.95);
   border: 2px solid #0ff;
   border-radius: 15px;
-  z-index: 1500;
+  z-index: 9999; /* stays on top when shown */
   padding: 20px;
   overflow-y: auto;
 }
+
 
 #settingsPanel {
   position: fixed;
@@ -147,3 +148,4 @@ button:hover {
   h1 { font-size: 1.8em; }
   #menuPanel { width: 90%; height: 70vh; max-width: 400px; max-height: 700px; }
 }
+
