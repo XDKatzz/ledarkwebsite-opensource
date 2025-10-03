@@ -1,29 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>le dark</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="seal.png"> <!-- favicon (seal image) -->
+  <!-- Comic Neue fallback for Comic Sans look on mobile -->
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="seal.png" type="image/png"> <!-- replace with your seal file if desired -->
 </head>
 <body>
-  <h1>le dark</h1>
+  <header>
+    <h1 id="title">le dark</h1>
+  </header>
 
-  <div class="controls">
-    <button id="clickBtn">Add Dark</button>
-    <button id="counterBtn">Clicks left: 1000</button>
-  </div>
+  <main>
+    <div class="controls">
+      <button id="addDarkBtn" class="control-btn">Add Dark</button>
+      <button id="clicksLeftBtn" class="control-btn">Clicks Left: 1000</button>
+    </div>
 
-  <div id="darkContainer"></div>
+    <section id="stage">
+      <div id="container" aria-live="polite"></div>
+    </section>
 
-  <div id="keypad"></div>
+    <!-- invisible bottom-left secret corner (long-press 1s to show keypad) -->
+    <button id="secretCorner" class="secret-corner" aria-hidden="true" title="secret"></button>
 
-  <!-- Secret button (☰), only appears after admin unlocked -->
-  <button id="secretTopBtn" style="display:none;">☰</button>
+    <!-- keypad (hidden by default) -->
+    <div id="keypad" class="keypad hidden" aria-hidden="true"></div>
 
-  <!-- Admin menu -->
-  <div id="menuPanel"></div>
+    <!-- admin message (brief textual feedback) -->
+    <div id="adminMessage" class="admin-message hidden" aria-live="polite"></div>
+
+    <!-- admin menu (opens only after entering 2871 when admin active) -->
+    <div id="menuPanel" class="menu hidden" aria-hidden="true"></div>
+
+    <!-- particle canvas (background) -->
+    <canvas id="particleCanvas" class="particles" aria-hidden="true"></canvas>
+  </main>
 
   <script src="script.js"></script>
 </body>
