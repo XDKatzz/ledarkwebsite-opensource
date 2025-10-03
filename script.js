@@ -20,6 +20,9 @@ let bottomMessage = document.getElementById("bottomMessage");
 const isMobile = /Mobi|Android/i.test(navigator.userAgent);
 const toggleStates = { Counter:true, Sound:false, Music:false };
 
+// Fonts to rotate
+const fonts = ["Comic Sans MS, cursive", "Courier, monospace", "Impact, sans-serif", "Arial Black, sans-serif"];
+
 // Random background each refresh
 const backgrounds = {
   "Rainbow Wave":"linear-gradient(270deg,#ff0000,#ff7300,#fffb00,#48ff00,#00ffd5,#002bff,#7a00ff,#ff00ab)",
@@ -55,14 +58,20 @@ function handleKeypadPress(key){
 clickBtn.addEventListener("click",()=>{
   if(clicksLeft>0){
     count++; clicksLeft--;
+
     let dark=document.createElement("span");
     dark.classList.add("darkWord");
     dark.textContent="Dark";
 
-    let shade = Math.floor((1000-clicksLeft)/1000*255);
+    // progressively darker text
+    let shade = Math.max(0, Math.floor(255 - (count/1000 * 255)));
     dark.style.color=`rgb(${shade},${shade},${shade})`;
 
-    if(count%50===0) dark.style.fontFamily = "Courier, monospace";
+    // change font every 50 clicks
+    if(count % 50 === 0){
+      let fontIndex = (count/50) % fonts.length;
+      dark.style.fontFamily = fonts[fontIndex];
+    }
 
     darkContainer.appendChild(dark);
     counterBtn.textContent=`Clicks left: ${clicksLeft}`;
@@ -84,7 +93,7 @@ settingsBtn.addEventListener("click",()=>{
   settingsPanel.style.display=(settingsPanel.style.display==="block")?"none":"block";
 });
 
-// Attach settings buttons
+// Settings buttons
 document.getElementById("toggleCounter").addEventListener("click",()=>{
   toggleStates.Counter=!toggleStates.Counter;
   counterBtn.style.display = toggleStates.Counter ? "inline-block" : "none";
