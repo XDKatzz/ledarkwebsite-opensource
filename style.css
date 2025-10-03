@@ -88,24 +88,22 @@ button:hover {
   padding: 20px;
   border-radius: 15px;
   z-index: 1500;
-  width: 300px;        /* fixed width */
+  width: 300px;
   min-width: 250px;
   max-width: 400px;
-  height: 300px;       /* fixed height */
+  height: 300px;
   min-height: 250px;
-  overflow-y: auto;    /* scroll if needed */
+  overflow-y: auto;
   color: #0ff;
   text-align: center;
   box-shadow: 0 0 20px #0ff inset;
 }
-@media(max-width:768px){
-  #menuPanel {
-    width: 90%;         /* fills most of mobile screen */
-    height: 300px;
-  }
+#menuPanel button {
+  width: 80%;
+  margin: 5px 0;
+  font-size: 1em;
+  padding: 10px;
 }
-
-
 
 #settingsPanel {
   position: fixed;
@@ -174,10 +172,9 @@ button:hover {
     font-size: 1.8em;
   }
   #menuPanel {
-    width: 95%;
+    width: 90%;
+    height: 300px;
     max-width: 300px;
     padding: 15px;
   }
 }
-
-
