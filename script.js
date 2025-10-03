@@ -19,7 +19,7 @@ let bottomMessage = document.getElementById("bottomMessage");
 const isMobile = /Mobi|Android/i.test(navigator.userAgent);
 const toggleStates = { Counter:true, Rainbow:false, Glow:false, Spin:false, Float:false, Chaos:false, Pulse:false };
 
-// Random backgrounds
+// Random background
 const backgrounds = {
   "Rainbow Wave":"linear-gradient(270deg,#ff0000,#ff7300,#fffb00,#48ff00,#00ffd5,#002bff,#7a00ff,#ff00ab)",
   "Space Grid":"radial-gradient(circle,#1e3c72,#2a5298)",
@@ -33,7 +33,7 @@ document.body.style.background = backgrounds[Object.keys(backgrounds)[Math.floor
 // Keypad
 function createKeypad(){
   keypadButtons.innerHTML="";
-  let keys=["1","2","3","4","5","6","C","0","E"];
+  let keys=["1","2","3","4","5","6","7","8","9","C","0","E"];
   keys.forEach(k=>{
     let btn=document.createElement("button");
     btn.textContent=k;
@@ -74,7 +74,6 @@ clickBtn.addEventListener("click",()=>{
     dark.classList.add("darkWord");
     dark.textContent="Dark";
 
-    // Gradually darken
     let shade = Math.floor((1000-clicksLeft)/1000*255);
     dark.style.color=`rgb(${shade},${shade},${shade})`;
 
