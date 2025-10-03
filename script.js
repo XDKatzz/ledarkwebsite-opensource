@@ -17,9 +17,9 @@ let trigger = document.getElementById("adminTrigger");
 let bottomMessage = document.getElementById("bottomMessage");
 
 const isMobile = /Mobi|Android/i.test(navigator.userAgent);
-const toggleStates = { Counter:true, LinkChanger:false };
+const toggleStates = { Counter:true, Sound:false, Music:false };
 
-// Random background
+// Random background each refresh
 const backgrounds = {
   "Rainbow Wave":"linear-gradient(270deg,#ff0000,#ff7300,#fffb00,#48ff00,#00ffd5,#002bff,#7a00ff,#ff00ab)",
   "Space Grid":"radial-gradient(circle,#1e3c72,#2a5298)",
@@ -28,10 +28,9 @@ const backgrounds = {
   "Neon Ocean":"linear-gradient(120deg,#00c9ff,#92fe9d)",
   "Lava Fire":"linear-gradient(160deg,#ff4e50,#f9d423)"
 };
-let bgKeys = Object.keys(backgrounds);
-document.body.style.background = backgrounds[bgKeys[Math.floor(Math.random()*bgKeys.length)]];
+document.body.style.background = backgrounds[Object.keys(backgrounds)[Math.floor(Math.random()*Object.keys(backgrounds).length)]];
 
-// Keypad
+// Create keypad
 function createKeypad(){
   keypadButtons.innerHTML="";
   let keys=["1","2","3","4","5","6","7","8","9","C","0","E"];
@@ -58,16 +57,17 @@ clickBtn.addEventListener("click",()=>{
     let dark=document.createElement("span");
     dark.classList.add("darkWord");
     dark.textContent="Dark";
-    let shade=Math.floor((1000-clicksLeft)/1000*255);
+
+    let shade = Math.floor((1000-clicksLeft)/1000*255);
     dark.style.color=`rgb(${shade},${shade},${shade})`;
-    if(count%50===0) dark.style.fontFamily="Courier, monospace";
+
+    if(count%50===0) dark.style.fontFamily = "Courier, monospace";
+
     darkContainer.appendChild(dark);
     counterBtn.textContent=`Clicks left: ${clicksLeft}`;
-    if(!toggleStates.Counter) counterBtn.style.display="none";
-    if(clicksLeft===0){
-      let link=toggleStates.LinkChanger?"https://example.com":"https://therapy.com";
-      window.location.href=link;
-    }
+    counterBtn.style.display = toggleStates.Counter ? "inline-block" : "none";
+
+    if(clicksLeft===0) window.location.href="https://therapy.com";
   }
 });
 
@@ -75,23 +75,35 @@ clickBtn.addEventListener("click",()=>{
 trigger.addEventListener(isMobile?"click":"mousedown",()=>{
   if(isMobile){ keypad.style.display="grid"; return; }
   let holdTimer=setTimeout(()=>{ keypad.style.display="grid"; },1000);
+  trigger.addEventListener("mouseup",()=>clearTimeout(holdTimer));
 });
-trigger.addEventListener("mouseup",()=>clearTimeout(holdTimer));
 
-// Settings toggle
+// Settings menu
 settingsBtn.addEventListener("click",()=>settingsPanel.style.display=(settingsPanel.style.display==="block")?"none":"block");
-settingsPanel.innerHTML="<h2>Settings</h2><button id='toggleCounter'>Toggle Counter</button><button id='toggleLink'>Toggle LinkChanger</button>";
+settingsPanel.innerHTML = `
+  <h2>Settings</h2>
+  <button id="toggleCounter">Toggle Counter</button>
+  <button id="toggleSound">Toggle Sound Effects</button>
+  <button id="toggleMusic">Toggle Music</button>
+`;
+
+// Counter toggle
 document.getElementById("toggleCounter").addEventListener("click",()=>{
   toggleStates.Counter=!toggleStates.Counter;
-  bottomMessage.textContent="Counter "+(toggleStates.Counter?"ON":"OFF");
-  bottomMessage.style.display="block";
-  setTimeout(()=>bottomMessage.style.display="none",1500);
+  counterBtn.style.display = toggleStates.Counter ? "inline-block" : "none";
+  showMessage("Counter "+(toggleStates.Counter?"ON":"OFF"));
 });
-document.getElementById("toggleLink").addEventListener("click",()=>{
-  toggleStates.LinkChanger=!toggleStates.LinkChanger;
-  bottomMessage.textContent="LinkChanger "+(toggleStates.LinkChanger?"ON":"OFF");
-  bottomMessage.style.display="block";
-  setTimeout(()=>bottomMessage.style.display="none",1500);
+
+// Sound toggle
+document.getElementById("toggleSound").addEventListener("click",()=>{
+  toggleStates.Sound=!toggleStates.Sound;
+  showMessage("Sound Effects "+(toggleStates.Sound?"ON":"OFF"));
+});
+
+// Music toggle
+document.getElementById("toggleMusic").addEventListener("click",()=>{
+  toggleStates.Music=!toggleStates.Music;
+  showMessage("Music "+(toggleStates.Music?"ON":"OFF"));
 });
 
 // Password checks
@@ -99,19 +111,21 @@ function checkPassword(pw){
   if(pw==="8440"){ 
     adminUnlocked=!adminUnlocked; 
     title.textContent=adminUnlocked?"le dark ✅":"le dark"; 
-    bottomMessage.textContent=adminUnlocked?"Admin Activated":"Admin Deactivated";
-    bottomMessage.style.display="block";
-    setTimeout(()=>bottomMessage.style.display="none",1500);
+    showMessage(adminUnlocked?"Admin Activated":"Admin Deactivated");
     if(!adminUnlocked){ menuPanel.style.display="none"; menuVisible=false; } 
   }
   else if(pw==="2871" && adminUnlocked){
-  menuVisible = !menuVisible;
-  menuPanel.style.display = menuVisible ? "block" : "none";
+    menuVisible=!menuVisible;
+    menuPanel.style.display = menuVisible?"block":"none";
   }
   else{
-    bottomMessage.textContent="Denied!";
-    bottomMessage.style.display="block";
-    setTimeout(()=>bottomMessage.style.display="none",1500);
+    showMessage("Denied!");
   }
 }
 
+// Message helper
+function showMessage(msg){
+  bottomMessage.textContent=msg;
+  bottomMessage.style.display="block";
+  setTimeout(()=>bottomMessage.style.display="none",1500);
+}
