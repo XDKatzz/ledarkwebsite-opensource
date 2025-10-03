@@ -95,21 +95,16 @@ button:hover {
   text-align: center;
   overflow-y: auto;
 }
-
-#closeAdmin {
+#menuPanel .closeBtn {
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 10px;
+  right: 10px;
   background: black;
   border: 2px solid #0ff;
-  border-radius: 6px;
   color: #0ff;
-  font-size: 1em;
   padding: 5px 10px;
-  cursor: pointer;
-}
-#closeAdmin:hover {
-  background: #111;
+  font-size: 1.2em;
+  border-radius: 5px;
 }
 
 /* Settings */
