@@ -1,47 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>le dark</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Seal_icon_cartoon.svg/1024px-Seal_icon_cartoon.svg.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Profile</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      background: radial-gradient(circle at top, #1f2933, #0b0f14);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      color: white;
+    }
+
+    /* MENU CONTAINER */
+    .menu {
+      width: 380px;
+      background: rgba(20, 25, 35, 0.85);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+      opacity: 0;
+      transform: translateY(30px) scale(0.98);
+      animation: menuFadeIn 1.2s ease forwards;
+    }
+
+    @keyframes menuFadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* PROFILE */
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .pfp {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .name {
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .description {
+      font-size: 0.9rem;
+      color: #b6c0cc;
+      margin-top: 4px;
+    }
+
+    /* TIERS */
+    .tiers-title {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+      font-weight: 600;
+     Ժ
+    }
+
+    .tier-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .tier {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.06);
+      animation: tierSlideIn 0.8s ease forwards;
+      opacity: 0;
+    }
+
+    .tier:nth-child(1) { animation-delay: 0.3s; }
+    .tier:nth-child(2) { animation-delay: 0.45s; }
+    .tier:nth-child(3) { animation-delay: 0.6s; }
+    .tier:nth-child(4) { animation-delay: 0.75s; }
+    .tier:nth-child(5) { animation-delay: 0.9s; }
+
+    @keyframes tierSlideIn {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+    }
+
+    .mode {
+      font-weight: 500;
+      color: #dbe3ee;
+    }
+
+    .rank {
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #5865f2, #8b5cf6);
+      font-size: 0.85rem;
+    }
+  </style>
 </head>
 <body>
-  <h1 id="title">le dark</h1>
 
-  <button id="clickBtn">Add Dark</button>
-  <button id="counterBtn">Clicks left: 1000</button>
-  <div id="darkContainer"></div>
+  <div class="menu">
 
-  <!-- Settings -->
-  <button id="settingsBtn">⚙️</button>
-  <div id="settingsPanel">
-    <h2>Settings</h2>
-    <button id="toggleCounter">Toggle Counter</button>
-    <button id="toggleSound">Toggle Sound Effects</button>
-    <button id="toggleMusic">Toggle Music</button>
+    <!-- PROFILE SECTION -->
+    <div class="profile">
+      <img
+        class="pfp"
+        src="https://cdn.discordapp.com/embed/avatars/0.png"
+        alt="Discord PFP"
+      />
+      <div>
+        <div class="name">komican</div>
+        <div class="description">watermelon</div>
+      </div>
+    </div>
+
+    <!-- TIERS SECTION -->
+    <div class="tiers-title">MCTiers (All Modes)</div>
+
+    <div class="tier-list">
+      <div class="tier">
+        <span class="mode">Vanilla</span>
+        <span class="rank">UNRANKED</span>
+      </div>
+      <div class="tier">
+        <span class="mode">UHC</span>
+        <span class="rank">UNRANKED</span>
+      </div>
+      <div class="tier">
+        <span class="mode">NethPot</span>
+        <span class="rank">UNRANKED</span>
+      </div>
+      <div class="tier">
+        <span class="mode">NetHOP</span>
+        <span class="rank">UNRANKED</span>
+      </div>
+      <div class="tier">
+        <span class="mode">SMP</span>
+        <span class="rank">UNRANKED</span>
+      </div>
+      <div class="tier">
+        <span class="mode">Sword</span>
+        <span class="rank">HT5</span>
+      </div>
+      <div class="tier">
+        <span class="mode">Axe</span>
+        <span class="rank">UNRANKED</span>
+      </div>
+      <div class="tier">
+        <span class="mode">Mace</span>
+        <span class="rank">LT5</span>
+      </div>
+    </div>
+
   </div>
 
-  <!-- Invisible admin trigger -->
-  <div id="adminTrigger"></div>
-
-  <!-- Keypad -->
-  <div id="keypad">
-    <div id="keypadDisplay"></div>
-    <div id="keypadButtons"></div>
-  </div>
-
-  <!-- Fullscreen Admin Panel -->
-  <div id="menuPanel">
-    <button id="closeMenu" class="closeBtn">❌</button>
-    <h2>Admin Panel</h2>
-    <p>Future crazy features go here…</p>
-  </div>
-
-  <!-- Bottom messages -->
-  <div id="bottomMessage"></div>
-
-  <script src="script.js"></script>
 </body>
 </html>
